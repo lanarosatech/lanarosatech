@@ -13,7 +13,6 @@ Previously journalist and producer, with great communication and interpersonal s
 <h2> 📊 GitHub Stats:</h2>
 
 ![](https://github-readme-stats.vercel.app/api?username=lanarosatech&theme=solarized-light&hide_border=true&include_all_commits=false&count_private=false)
-![](https://github-readme-streak-stats.herokuapp.com/?user=lanarosatech&theme=solarized-light&hide_border=true)
 
 <h2> 🏆 GitHub Trophies </h2>
 
