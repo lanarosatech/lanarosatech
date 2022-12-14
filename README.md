@@ -1,5 +1,4 @@
 <div align="center">
-<h2> 💫 About Me:</h2>
 Here is Lana, a full stack developer with emphasis on Ruby on Rails.<br>
 Previously journalist and producer, with great communication and interpersonal skills.
 
