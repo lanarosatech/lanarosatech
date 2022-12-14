@@ -1,5 +1,5 @@
 <div align="center">
-Here is Lana, a full stack developer with emphasis on Ruby on Rails.<br>
+✨ Here is Lana, a full stack developer with emphasis on Ruby on Rails.<br>
 Previously journalist and producer, with great communication and interpersonal skills.
 
 <br><img src="https://media.tenor.com/6PUE1PAsXQUAAAAd/scaler-create-impact.gif" width="20%" height="20%"/>
