@@ -1,71 +1,109 @@
 class Game
-
   # define the different levels of difficulty
   DIFFICULTIES = {
     easy: 1,
     medium: 2,
     hard: 3
-  };
+  }
 
   def initialize
     @board = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
-    @com = "X" # the computer's marker
-    @hum = "O" # the user's marker
+    @com = 'X' # the computer's marker
+    @hum = 'O' # the user's marker
   end
 
   def start_game
-    puts "# This is tic tac toe game #"
+    puts '# This is tic tac toe game #'
+    puts 'Please select the opponent:'
+    puts '1: Computer'
+    puts '2: Another human player'
+    input = gets.chomp
 
-    puts "Please select the difficulty level:"
+    # check if the input is a valid option
+    if input.match(/\A[1-2]\z/)
+      # convert the input to an integer
+      opponent = input.to_i
+    else
+      opponent = nil
+      puts 'Invalid input. Please enter a valid number.'
+    end
+
+    if opponent == 1
+      # prompt the user to select the difficulty level
+      puts 'Please select the difficulty level:'
       DIFFICULTIES.each do |name, value|
         puts "#{value}: #{name}"
       end
-    input = gets.chomp
-    # check if the input is a valid difficulty level
-    if input.match(/\A[1-3]\z/)
-      # convert the input to an integer and store it in the difficulty variable
-      difficulty = input.to_i
-    else
-      difficulty = nil
-      puts "Invalid difficulty level. Please enter a valid number."
+      difficulty = gets.chomp
+      # check if the input is a valid difficulty level
+      if difficulty.match(/\A[1-3]\z/)
+        # convert the input to an integer and store it in the difficulty variable
+        difficulty = difficulty.to_i
+      else
+        difficulty = nil
+        puts 'Invalid difficulty level. Please enter a valid number.'
+      end
     end
 
-    puts "Enter a number from 0 to 8:"
-
+    current_player = 1
     loop do
       # print the game board
       puts " #{@board[0]} | #{@board[1]} | #{@board[2]} \n===+===+===\n #{@board[3]} | #{@board[4]} | #{@board[5]} \n===+===+===\n #{@board[6]} | #{@board[7]} | #{@board[8]} \n"
+      # get the current player's move
+      if current_player == 1
+        get_human_spot(1)
+        # check if the game is over
+        if game_is_over(@board)
+          puts 'Player 1 wins!'
+          break
+        elsif tie(@board)
+          puts 'Game is a tie!'
+          break
+        end
+        current_player = 2
+      else
+        if opponent == 1
+          # make the computer's move
+          eval_board(difficulty)
+          # check if the game is over
+          if game_is_over(@board)
+            puts 'Computer player wins!'
+            break
+          elsif tie(@board)
+            puts 'Game is a tie!'
+            break
+          end
+        else
+          # get the second human player's move
+          get_human_spot(2)
+          # check if the game is over
+          if game_is_over(@board)
+            puts "Player 2 wins!"
+            break
+          elsif tie(@board)
+            puts "Game is a tie!"
+            break
+          end
 
-      # get the human player's move
-      get_human_spot
-
-      # check if the game is over
-      if game_is_over(@board)
-        puts "Human player wins!"
-        break
-      elsif tie(@board)
-        puts "Game is a tie!"
-        break
-      end
-
-      # make the computer's move
-      eval_board(difficulty)
-
-      # check if the game is over
-      if game_is_over(@board)
-        puts "Computer player wins!"
-        break
-      elsif tie(@board)
-        puts "Game is a tie!"
-        break
+          # get the first human player's move
+          get_human_spot(1)
+          # check if the game is over
+          if game_is_over(@board)
+            puts "Player 1 wins!"
+            break
+          elsif tie(@board)
+            puts "Game is a tie!"
+            break
+          end
+        end
       end
     end
   end
 
-
-  def get_human_spot
+  def get_human_spot(player)
     spot = nil
     until spot
+      puts "Player #{player}, enter a number from 0 to 8:"
       input = gets.chomp
       # check if the input is a valid number in the range 0-8
       if input.match(/\A[0-8]\z/)
@@ -73,8 +111,8 @@ class Game
         spot = input.to_i
         # check if the spot is available
         if @board[spot] != "X" && @board[spot] != "O"
-          # set the board spot to "X" to indicate the human player's move
-          @board[spot] = @hum
+          # set the board spot to the player's marker to indicate their move
+          @board[spot] = player == 1 ? @hum : @com
         else
           spot = nil
         end
@@ -83,6 +121,7 @@ class Game
       end
     end
   end
+
 
   def eval_board(difficulty)
     spot = nil
