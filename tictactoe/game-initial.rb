@@ -1,4 +1,12 @@
 class Game
+
+  # define the different levels of difficulty
+  DIFFICULTIES = {
+    easy: 1,
+    medium: 2,
+    hard: 3
+  };
+
   def initialize
     @board = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
     @com = "X" # the computer's marker
@@ -6,20 +14,54 @@ class Game
   end
 
   def start_game
-    # start by printing the board
-    puts "Hi! This is tic tac toe game. Let's play?"
-    puts "Enter a number from 0 to 8: "
-    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} \n===+===+===\n #{@board[3]} | #{@board[4]} | #{@board[5]} \n===+===+===\n #{@board[6]} | #{@board[7]} | #{@board[8]} \n"
-    # loop through until the game was won or tied
-    until game_is_over(@board) || tie(@board)
-      get_human_spot
-      if !game_is_over(@board) && !tie(@board)
-        eval_board
+    puts "# This is tic tac toe game #"
+
+    puts "Please select the difficulty level:"
+      DIFFICULTIES.each do |name, value|
+        puts "#{value}: #{name}"
       end
-      puts " #{@board[0]} | #{@board[1]} | #{@board[2]} \n===+===+===\n #{@board[3]} | #{@board[4]} | #{@board[5]} \n===+===+===\n #{@board[6]} | #{@board[7]} | #{@board[8]} \n"
+    input = gets.chomp
+    # check if the input is a valid difficulty level
+    if input.match(/\A[1-3]\z/)
+      # convert the input to an integer and store it in the difficulty variable
+      difficulty = input.to_i
+    else
+      difficulty = nil
+      puts "Invalid difficulty level. Please enter a valid number."
     end
-    puts "Game over"
+
+    puts "Enter a number from 0 to 8:"
+
+    loop do
+      # print the game board
+      puts " #{@board[0]} | #{@board[1]} | #{@board[2]} \n===+===+===\n #{@board[3]} | #{@board[4]} | #{@board[5]} \n===+===+===\n #{@board[6]} | #{@board[7]} | #{@board[8]} \n"
+
+      # get the human player's move
+      get_human_spot
+
+      # check if the game is over
+      if game_is_over(@board)
+        puts "Human player wins!"
+        break
+      elsif tie(@board)
+        puts "Game is a tie!"
+        break
+      end
+
+      # make the computer's move
+      eval_board(difficulty)
+
+      # check if the game is over
+      if game_is_over(@board)
+        puts "Computer player wins!"
+        break
+      elsif tie(@board)
+        puts "Game is a tie!"
+        break
+      end
+    end
   end
+
 
   def get_human_spot
     spot = nil
@@ -42,23 +84,45 @@ class Game
     end
   end
 
-
-  def eval_board
+  def eval_board(difficulty)
     spot = nil
     until spot
-      if @board[4] == "4"
-        spot = 4
+      case difficulty
+      when DIFFICULTIES[:easy]
+        # for the easy difficulty level, the computer player makes a random move
+        spot = get_random_move
+      when DIFFICULTIES[:medium]
+        # for the medium difficulty level, the computer player makes the best possible move,
+        # but prioritizing the center spot and the corners over the edges
+        if @board[4] == "4"
+          spot = 4
+        else
+          spot = get_best_corner_or_center_move(@board, @com)
+        end
+      when DIFFICULTIES[:hard]
+        # for the hard difficulty level, the computer player makes the best possible move
+        spot = get_best_move(@board, @com)
+      end
+      if @board[spot] != "X" && @board[spot] != "O"
         @board[spot] = @com
       else
-        spot = get_best_move(@board, @com)
-        if @board[spot] != "X" && @board[spot] != "O"
-          @board[spot] = @com
-        else
-          spot = nil
-        end
+        spot = nil
       end
     end
   end
+
+  def get_random_move
+    available_spaces = []
+    @board.each_with_index do |marker, index|
+      if marker != "X" && marker != "O"
+        available_spaces << index
+      end
+    end
+    # select a random space from the available spaces
+    random_index = rand(0...available_spaces.count)
+    return available_spaces[random_index]
+  end
+
 
   def get_best_move(board, next_player, depth = 0, best_score = {})
     available_spaces = []
@@ -93,6 +157,27 @@ class Game
     end
   end
 
+  def get_best_corner_or_center_move(board, next_player)
+    # first, check if the center spot is available
+    if board[4] != "X" && board[4] != "O"
+      return 4
+    end
+
+    # if the center spot is not available, check the corners
+    corners = [0, 2, 6, 8]
+    corners.each do |corner|
+      if board[corner] != "X" && board[corner] != "O"
+        return corner
+      end
+    end
+
+    # if no corners are available, return a random edge spot
+    edges = [1, 3, 5, 7]
+    n = rand(0..edges.count)
+    return edges[n]
+  end
+
+
   def game_is_over(b)
 
     [b[0], b[1], b[2]].uniq.length == 1 ||
@@ -108,7 +193,6 @@ class Game
   def tie(b)
     b.all? { |s| s == "X" || s == "O" }
   end
-
 end
 
 game = Game.new
