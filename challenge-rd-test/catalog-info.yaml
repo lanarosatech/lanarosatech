@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: developer_challenges
+  description: Desafio para novas pessoas engenheiras chegando na RD
+  annotations:
+    github.com/project-slug: ResultadosDigitais/developer_challenges
+spec:
+  type: library
+  owner: rd-products-and-teams
+  lifecycle: production
