@@ -1,9 +1,5 @@
 task :eslint do
-  system "../../node_modules/.bin/eslint lib/*.js"
-end
-
-task :mocha do
-  # Needed for Kitt
+  system "../../node_modules/.bin/eslint lib/index.js"
 end
 
 task :webpack do
