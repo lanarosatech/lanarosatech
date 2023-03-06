@@ -1,0 +1,136 @@
+h2 {
+  color:#f3f0d9;
+  text-shadow: 1px 1px 2px #8b8b89;
+  padding-top: 7%;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 80px;
+}
+
+h3 {
+  color:#f0ecec;
+  text-shadow: 1px 1px 2px #737470;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 40px;
+}
+
+.clickable {
+  padding: 40px;
+  width: 220px;
+  height: 150px;
+  border: 1px solid #dedede;
+  border-color: transparent;
+  color: #dfd6d6;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #5e5c5c;
+}
+
+/* Define uma cor de fundo aleatória para cada objeto com a classe .clickable */
+.clickable:nth-of-type(1) {
+  background-color: #e5650c;
+}
+
+.clickable:nth-of-type(2) {
+  background-color: #7687ce;
+}
+
+.clickable:nth-of-type(3) {
+  background-color: #e5abfe;
+}
+
+.clickable:nth-of-type(4) {
+  background-color: #485ccc;
+}
+
+.clickable:nth-of-type(5) {
+  background-color: #6ee4aa;
+}
+
+.clickable:nth-of-type(6) {
+  background-color: #a1009c;
+}
+
+/* Estilize o ícone */
+.clickable i {
+  font-size: 24px;
+  margin-bottom: 10px;
+  display: none; /* Inicialmente esconder o ícone */
+}
+
+/* Estilize o texto */
+.clickable small {
+  display: none; /* Inicialmente esconder o texto */
+}
+
+/* Quando o elemento for clicado, exiba o ícone e o texto */
+.clickable.active i {
+  display: block;
+}
+
+.clickable.active small {
+  display: block;
+}
+
+/* Estilize o ícone e o texto quando o mouse passar por cima */
+.clickable:hover i {
+  color: #e1d5d5;
+}
+
+.clickable:hover small {
+  color: #e1d5d5;
+}
+
+.clickable.active {
+  color: inherit;
+  border-color: transparent;
+}
+
+.clickable.active i {
+  color: #e1d5d5;
+}
+
+.clickable.active small {
+  color: #e1d5d5;
+}
+
+/* estilo do footer:  */
+
+footer {
+  background-color: #a58fae;
+  color: #dfd6d6;
+  padding: 40px 20px 20px; /* aumentar o padding-top para 40px */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  height: 60px; /* altura personalizada */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+footer p {
+  margin-bottom: 0; /* remover margem inferior do parágrafo */
+}
+
+footer a {
+  color: #dfd6d6;
+  text-shadow: 1px 1px 2px #737470;
+}
+
+footer a:hover {
+  color: #dfd6d6;
+  text-shadow: 1px 1px 2px #737470;
+}
+
+.col-md-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
