@@ -1,0 +1,12 @@
+GEM
+  specs:
+
+PLATFORMS
+  arm64-darwin-21
+  x86_64-darwin-21
+  x86_64-linux
+
+DEPENDENCIES
+
+BUNDLED WITH
+   2.3.26
