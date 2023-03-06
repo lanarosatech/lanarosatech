@@ -1,21 +1,26 @@
 {
-  "name": "bingo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
-  "directories": {
-    "lib": "lib"
+  "extends": "airbnb-base",
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false
   },
-  "scripts": {
-    "start": "webpack serve --mode development --host 0.0.0.0 --port $PORT"
+  "rules": {
+    "no-console": "off",
+    "no-alert": "off",
+    "comma-dangle": "off",
+    "quotes": "off",
+    "no-unused-vars": "off",
+    "no-param-reassign": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "prefer-destructuring": "off",
+    "arrow-body-style": "off"
   },
-  "repository": {
-    "type": "git",
-    "url": "bingo"
+  "env": {
+    "node": true,
+    "mocha": true,
+    "browser": true
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@webpack-cli/serve": "^2.0.1"
-  }
+
+  "license": "UNLICENSED"
 }
