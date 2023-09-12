@@ -8,7 +8,7 @@
 - 🤝 I’m looking for help with **Getting a new job as a developer**
 - 💬 Ask me about **Ruby on Rails, React, Node, and Java**
 - 📫 How to reach me on my [**email**](lanarosa.tech@gmail.com)
-- 📄 Know about my experiences on my [**resume**]([https://www.canva.com/design/DAFUpc4xVds/-HuPHLwq9OnJqV-25zmutg/edit?utm_content=DAFUpc4xVds&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton](https://linkedin.com/in/lanadeoliveirafreitas/))
+- 📄 Know about my experiences on my [**resume**](https://www.canva.com/design/DAFUpc4xVds/-HuPHLwq9OnJqV-25zmutg/edit?utm_content=DAFUpc4xVds&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - 💻 Connect with me on my [**LinkedIn**](https://www.canva.com/design/DAFUpc4xVds/-HuPHLwq9OnJqV-25zmutg/edit?utm_content=DAFUpc4xVds&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - ⚡ Fun fact **I love to talk, listen, and learn about culture art.**
 
